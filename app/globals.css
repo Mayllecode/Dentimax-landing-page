@@ -1,6 +1,104 @@
 @import "tailwindcss";
 
 :root {
+  --dm-navy: #0d1b3e;
+  --dm-navy-light: #152a5a;
+  --dm-card: #1a2f5e;
+  --dm-blue: #2563eb;
+  --dm-blue-light: #3b82f6;
+  --dm-cyan: #06b6d4;
+  --dm-gold: #f59e0b;
+  --dm-white: #f8fafc;
+  --dm-gray: #94a3b8;
+  --dm-green: #10b981;
+}
+
+@theme inline {
+  --color-dm-navy: var(--dm-navy);
+  --color-dm-navy-light: var(--dm-navy-light);
+  --color-dm-card: var(--dm-card);
+  --color-dm-blue: var(--dm-blue);
+  --color-dm-blue-light: var(--dm-blue-light);
+  --color-dm-cyan: var(--dm-cyan);
+  --color-dm-gold: var(--dm-gold);
+  --color-dm-white: var(--dm-white);
+  --color-dm-gray: var(--dm-gray);
+  --color-dm-green: var(--dm-green);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--dm-navy);
+  color: var(--dm-white);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--dm-blue);
+  color: #fff;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--dm-navy); }
+::-webkit-scrollbar-thumb { background: var(--dm-blue); border-radius: 3px; }
+
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 3rem;
+  animation: marquee 22s linear infinite;
+  white-space: nowrap;
+}
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.tooth-float {
+  animation: floatY 4s ease-in-out infinite;
+}
+.tooth-float-delay {
+  animation: floatY 4s ease-in-out infinite 1.5s;
+}
+@keyframes floatY {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-18px) rotate(4deg); }
+}
+
+.glow-blue {
+  box-shadow: 0 0 30px rgba(37, 99, 235, 0.35);
+}
+.glow-blue:hover {
+  box-shadow: 0 0 50px rgba(37, 99, 235, 0.55);
+}
+
+.before-after-clip-left {
+  clip-path: inset(0 50% 0 0);
+}
+.before-after-clip-right {
+  clip-path: inset(0 0 0 50%);
+}
+
+:root {
   --background: #ffffff;
   --foreground: #171717;
 }

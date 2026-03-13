@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 
 export async function POST(req: Request) {
   let body: Record<string, string>;
@@ -23,7 +23,7 @@ export async function POST(req: Request) {
     .filter(Boolean)
     .join("\n");
 
-  const { error } = await supabase.from("appointments").insert({
+  const { error } = await getSupabase().from("appointments").insert({
     patient_name: name.trim(),
     patient_phone: phone.trim(),
     patient_email: email?.trim() || null,
